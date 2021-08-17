@@ -59,6 +59,7 @@ public class ATM_Interface extends JFrame{
             public void actionPerformed(ActionEvent actionEvent) {
                 String one = a1Button.getText();
                 editorPane1.setText("1");
+                editorPane1.setText("1");
             }
         });
 
