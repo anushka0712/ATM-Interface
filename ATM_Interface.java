@@ -58,7 +58,7 @@ public class ATM_Interface extends JFrame{
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 String one = a1Button.getText();
-
+                editorPane1.setText("1");
             }
         });
 
