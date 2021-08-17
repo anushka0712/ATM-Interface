@@ -1,4 +1,3 @@
-package client;
 
 import logic.User;
 
