@@ -8,6 +8,8 @@ public class Main {
 		u1.deposit_amount(2.5);
 		
 		u1.toString();
+
+		u1.toString();
 	}
 
 }
