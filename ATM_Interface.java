@@ -17,7 +17,7 @@ public class ATM_Interface extends JFrame{
     private JButton exitButton;
     private JButton depositButton;
     private JButton checkBalanceButton;
-    private JEditorPane editorPane1;
+    private JTextArea textArea1;
 
     public ATM_Interface() {
         transferButton.addActionListener(new ActionListener() {
@@ -58,11 +58,17 @@ public class ATM_Interface extends JFrame{
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 String one = a1Button.getText();
-                editorPane1.setText("1");
-                editorPane1.setText("1");
+                textArea1.append(one);
             }
         });
 
+        a2Button.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String two = a1Button.getText();
+                textArea1.append(two);
+            }
+        });
     }
 
     public static void main(String[] args) {
