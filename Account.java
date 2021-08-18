@@ -14,6 +14,6 @@ public abstract class Account {
 	}
 
 }
- // A bank has many Users. User has name, card number, pin and balance. User can deposit, withdraw and check balance ... 
+ // A bank has many Users. logic.User has name, card number, pin and balance. logic.User can deposit, withdraw and check balance ...
 
 // account has name, card number, pin and balance. amount can be deposited and withdrawn.
