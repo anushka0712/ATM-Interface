@@ -1,7 +1,6 @@
 package client;
 
 
-import logic.ATM_Interface;
 import logic.Login;
 import logic.User;
 
@@ -22,14 +21,15 @@ public class Final_interface {
         sampleUsers.add(u1);
         sampleUsers.add(u2);
         sampleUsers.add(u3);
+        User user = new User("",0,0,0.0);
 
-        ATM_Interface atm = new ATM_Interface();
-        Login l = new Login(sampleUsers,atm);
 
-        l.setContentPane(new Login(sampleUsers,atm).LoginMain);
+        Login l = new Login(sampleUsers);
+
+        l.setContentPane(new Login(sampleUsers).getLoginMain());
         l.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         l.setVisible(true);
         l.pack();
-
+        user = l.getCurrentUser();
     }
 }

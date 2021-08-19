@@ -29,11 +29,13 @@ public class ATM_Interface extends JFrame {
     private JButton a0Button;
     private JButton goButton;
 
-    private String[] amount = {""};
+    private String[] amount = new String[1];
     private String[] operation = new String[1];
-    public ATM_Interface() {
+    private User user;
 
+    public ATM_Interface(User currentUser) {
 
+        this.user = currentUser;
         transferButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
@@ -162,15 +164,15 @@ public class ATM_Interface extends JFrame {
             public void actionPerformed(ActionEvent e) {
 
                 if ("Deposit".equals(operation[0])) {
-                    Deposit d = new Deposit();
-                    d.deposit_amount(amount);
+                    Deposit d = new Deposit(user);
+                    d.deposit_amount(amount[0]);
                    // double finalValue = Double.parseDouble(amount[0]);
                     JOptionPane.showMessageDialog(null, "Rs. " + amount[0] + " Deposited successfully.");
                     amount[0] = "";
                 }
                 else if("Withdraw".equals(operation[0])){
                     Withdraw w = new Withdraw();
-                    w.withdraw_amount(amount);
+                    w.withdraw_amount(amount[0]);
                     // double finalValue = Double.parseDouble(amount[0]);
                     JOptionPane.showMessageDialog(null,"Rs. " + amount[0] + " Withdrawn successfully.");
                     amount[0] = "";

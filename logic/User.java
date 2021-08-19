@@ -16,26 +16,7 @@ public class User {
 		this.balance = balance;
 	}
 
-	public String getName() {
-		return name;
-	}
 
-	public long getCard_number() {
-		return card_number;
-	}
-
-	public int getPin() {
-		return pin;
-	}
-	
-	public double getBalance() {
-		return balance;
-	}
-
-	public void setBalance(double balance) {
-		this.balance = balance;
-	}
-	
 	public void deposit_amount(double amount) {
 		balance += amount;
 		System.out.println("Rs."+ amount + " deposited sucessfully.");
@@ -62,6 +43,35 @@ public class User {
 	public String toString() {
 		return "logic.User balance = " + balance ;
 	}
-	
-	
+
+	public String getName() {
+		return name;
+	}
+
+	public long getCard_number() {
+		return card_number;
+	}
+
+	public double getBalance() {
+		return balance;
+	}
+
+	public int getPin() {
+		return pin;
+	}
+	public void setCard_number(long card_number) {
+		this.card_number = card_number;
+	}
+
+	public void setPin(int pin) {
+		this.pin = pin;
+	}
+
+	public void setBalance(double balance) {
+		this.balance = balance;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
 }
