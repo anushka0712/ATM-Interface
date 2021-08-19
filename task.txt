@@ -1,0 +1,30 @@
+Tasks -
+1. Recode login validations
+
+2. Commit push
+
+3. Add validition to deposit and login (don't allow spaces and enter key)
+
+4. Add functions to following buttons :
+
+    Withdraw, check balance,      transer, change pin, exit
+
+5. Make gui form to display transaction history of a perticular account number
+
+6. Create database of transaction history... Each transaction has :
+
+    acc no. , Operation, amount,     date/time
+
+Each user will have a arraylist of such transactions..
+We already have arraylist of sample users..
+So ..
+
+7. Add arraylist<Transaction> in class User
+
+8. Add actionlistner to the red 'X' button (backspacing)
+
+9. Figure out how to access balance variable on the backend
+
+10. Complete classes:
+
+       Deposit, withdraw, transfer
