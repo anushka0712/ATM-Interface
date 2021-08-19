@@ -45,24 +45,43 @@ public class Login extends JFrame {
 
     public boolean cardValidity(String number) {
         boolean valid = false;
-        for (User u : sampleUsers) {
-            if (u.getCard_number() == Integer.parseInt(number)) {
-                valid = true;
-                break;
+        if(number.length()==16 && Validator(number))
+        {
+            for (User u : sampleUsers) {
+                if (u.getCard_number() == Integer.parseInt(number)) {
+                    valid = true;
+                    break;
+                }
             }
         }
+
         return valid;
     }
 
     public boolean pinValidity(char[] pin) {
         boolean valid = false;
-        for (User u : sampleUsers) {
-            if (u.getPin() == Integer.parseInt(String.valueOf(pin))) {
-                valid = true;
-                break;
+        String pinid = String.valueOf(pin);
+        if(pinid.length()==4 && Validator(pinid))
+        {
+            for (User u : sampleUsers) {
+                if (u.getPin() == Integer.parseInt(String.valueOf(pin))) {
+                    valid = true;
+                    break;
+                }
             }
         }
+
         return valid;
+    }
+
+    public static boolean Validator(String str){
+        String regex = "[0-9]*";
+        boolean flag = false;
+        if(str.matches(regex))
+        {
+            flag = true;
+        }
+        return flag;
     }
 
 }
