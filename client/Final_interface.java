@@ -22,7 +22,6 @@ public class Final_interface {
         A1.add(u1);
         A1.add(u2);
         A1.add(u3);
-        System.out.println("lololo");
         Login l = new Login(A1);
         ATM_Interface a = new ATM_Interface();
 
