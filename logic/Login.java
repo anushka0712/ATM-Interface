@@ -1,7 +1,6 @@
 package logic;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -18,7 +17,7 @@ public class Login extends JFrame {
 //    User u3 = new User("Mai",13579,6967,300000.1);
 
 
-    public Login(ArrayList Users) {
+    public Login(ArrayList Users,ATM_Interface atmInterface) {
 
         this.sampleUsers = Users;
         ENTERButton.addActionListener(new ActionListener() {
@@ -34,33 +33,30 @@ public class Login extends JFrame {
                         JOptionPane.showMessageDialog(null, "INVALID PIN");
                     } else {
                         JOptionPane.showMessageDialog(null, "LOGGED IN SUCESSFULLY!");
+                        atmInterface.setContentPane(new ATM_Interface().Main);
+                        atmInterface.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                        atmInterface.setVisible(true);
+                        atmInterface.pack();
                     }
                 }
             }
         });
-
     }
 
     public boolean cardValidity(String number) {
         boolean valid = false;
         for (User u : sampleUsers) {
-//            System.out.println("In");
-//            System.out.println(u.getCard_number());
-//            System.out.println(Integer.parseInt(number));
             if (u.getCard_number() == Integer.parseInt(number)) {
-//                System.out.println("In true");
                 valid = true;
                 break;
             }
         }
-//        System.out.println(valid + "!");
         return valid;
     }
 
     public boolean pinValidity(char[] pin) {
         boolean valid = false;
         for (User u : sampleUsers) {
-            System.out.println(u.getPin() + Integer.parseInt(String.valueOf(pin)));
             if (u.getPin() == Integer.parseInt(String.valueOf(pin))) {
                 valid = true;
                 break;

@@ -15,29 +15,21 @@ public class Final_interface {
         } finally {
         }
 
-        ArrayList<User> A1 = new ArrayList<User>();
+        ArrayList<User> sampleUsers = new ArrayList<User>();
         User u1 = new User("Rai",12345,6969,100000.1);
         User u2 = new User("Sai",24680,6968,200000.1);
         User u3 = new User("Mai",13579,6967,300000.1);
-        A1.add(u1);
-        A1.add(u2);
-        A1.add(u3);
-        Login l = new Login(A1);
-        ATM_Interface a = new ATM_Interface();
+        sampleUsers.add(u1);
+        sampleUsers.add(u2);
+        sampleUsers.add(u3);
 
-        l.setContentPane(new Login(A1).LoginMain);
-        l.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        ATM_Interface atm = new ATM_Interface();
+        Login l = new Login(sampleUsers,atm);
+
+        l.setContentPane(new Login(sampleUsers,atm).LoginMain);
+        l.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         l.setVisible(true);
         l.pack();
-
-        a.setContentPane(new ATM_Interface().Main);
-        a.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        a.setVisible(true);
-        a.pack();
-
-
-
-
 
     }
 }
