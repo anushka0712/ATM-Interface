@@ -33,7 +33,7 @@ public class Login extends JFrame {
                         JOptionPane.showMessageDialog(null, "INVALID PIN");
                     } else {
                         JOptionPane.showMessageDialog(null, "LOGGED IN SUCESSFULLY!");
-                        atmInterface.setContentPane(new ATM_Interface().Main);
+                        atmInterface.setContentPane(new ATM_Interface().getMain());
                         atmInterface.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                         atmInterface.setVisible(true);
                         atmInterface.pack();

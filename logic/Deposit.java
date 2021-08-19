@@ -1,13 +1,9 @@
 package logic;
 
-public class Deposit extends logic.Transaction {
-
-
+public class Deposit{
 	private double amount;
 
-	
 	public void deposit_amount(String[] amount) {
-
 //		balance += amount;
 //		System.out.println("Rs."+ amount + " deposited sucessfully.");
 //		System.out.println("Current balance : " + balance);
@@ -18,13 +14,4 @@ public class Deposit extends logic.Transaction {
 
 	}
 
-	@Override
-	public double get_balance() {
-		return 0;
-	}
-
-	@Override
-	public void add_history() {
-
-	}
 }

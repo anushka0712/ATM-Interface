@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 
 
 public class ATM_Interface extends JFrame {
-    public JPanel Main;
+    private JPanel Main;
     private JButton withdrawButton;
     private JButton transferButton;
     private JButton a1Button;
@@ -15,7 +15,7 @@ public class ATM_Interface extends JFrame {
     private JButton a4Button;
     private JButton a5Button;
     private JPasswordField passwordField1;
-    private JTextArea displayTextArea;
+    //public JTextArea displayTextArea;
     private JButton changePinButton;
     private JButton exitButton;
     private JButton depositButton;
@@ -29,42 +29,43 @@ public class ATM_Interface extends JFrame {
     private JButton a0Button;
     private JButton goButton;
 
+    private String[] amount = {""};
+    private String[] operation = new String[1];
     public ATM_Interface() {
 
-        final String[] amount = {""};
-        final String[] operation = {""};
+
         transferButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                operation[0] += "Transfer";
+                operation[0] = "Transfer";
                 JOptionPane.showMessageDialog(null, "Money Transferred.");
             }
         });
         withdrawButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                operation[0] += "logic.Withdraw";
-                JOptionPane.showMessageDialog(null, "Money Withdrawn.");
+                operation[0] = "Withdraw";
+                textArea1.setText("Enter the amount to be withdrawn : " + "\n\n" + "Rs. ");
             }
         });
         depositButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                operation[0] += "logic.Deposit";
+                operation[0] = "Deposit";
                 textArea1.setText("Enter the amount to be deposited : " + "\n\n" + "Rs. ");
             }
         });
         checkBalanceButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                operation[0] += "Check Balance";
+                operation[0] = "Check Balance";
                 JOptionPane.showMessageDialog(null, "Your Balance is Rs.");
             }
         });
         changePinButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                operation[0] += "Change Pin";
+                operation[0] = "Change Pin";
                 JOptionPane.showMessageDialog(null, "Pin changed.");
             }
         });
@@ -153,25 +154,77 @@ public class ATM_Interface extends JFrame {
         cancelButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
             }
         });
 
         goButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if ("logic.Deposit".equals(operation[0])) {
 
+                if ("Deposit".equals(operation[0])) {
                     Deposit d = new Deposit();
                     d.deposit_amount(amount);
-                    double finalValue = Double.valueOf(amount[0]);
-                    JOptionPane.showMessageDialog(null, "Rs. " + amount[0] + " Deposited");
-                    //JOptionPane.showMessageDialog(null, "Money Deposited.");
-
+                   // double finalValue = Double.parseDouble(amount[0]);
+                    JOptionPane.showMessageDialog(null, "Rs. " + amount[0] + " Deposited successfully.");
+                    amount[0] = "";
+                }
+                else if("Withdraw".equals(operation[0])){
+                    Withdraw w = new Withdraw();
+                    w.withdraw_amount(amount);
+                    // double finalValue = Double.parseDouble(amount[0]);
+                    JOptionPane.showMessageDialog(null,"Rs. " + amount[0] + " Withdrawn successfully.");
+                    amount[0] = "";
                 }
 
             }
         });
     }
 
+    public String getOperation(){
+        return operation[0];
+    }
+
+    public String[] getAmount() {
+        return amount;
+    }
+
+    public JPanel getMain() {
+        return Main;
+    }
+
+    public JButton getWithdrawButton() {
+        return withdrawButton;
+    }
+
+    public JButton getTransferButton() {
+        return transferButton;
+    }
+
+    public JPasswordField getPasswordField1() {
+        return passwordField1;
+    }
+
+    public JButton getChangePinButton() {
+        return changePinButton;
+    }
+
+    public JButton getExitButton() {
+        return exitButton;
+    }
+
+    public JButton getDepositButton() {
+        return depositButton;
+    }
+
+    public JButton getCheckBalanceButton() {
+        return checkBalanceButton;
+    }
+
+    public JTextArea getTextArea1() {
+        return textArea1;
+    }
+
+    public JButton getCancelButton() {
+        return cancelButton;
+    }
 }
