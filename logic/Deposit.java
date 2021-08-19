@@ -1,7 +1,7 @@
 package logic;
 
 public class Deposit{
-	private double amount;
+
 	User currentUser;
 
 	public Deposit(User currentUser)
@@ -9,14 +9,15 @@ public class Deposit{
 		this.currentUser = currentUser;
 	}
 
-	public void deposit_amount(String amount) {
+	public void deposit_amount(double Depositamount) {
 //		balance += amount;
 //		System.out.println("Rs."+ amount + " deposited sucessfully.");
 //		System.out.println("Current balance : " + balance);
-//
-		System.out.println("Rs."+ amount + " deposited sucessfully.");
 
-		//System.out.println("Current balance : " + balance);
+		currentUser.setBalance(currentUser.getBalance() + Depositamount);
+		System.out.println("Rs."+ Depositamount + " deposited sucessfully.");
+
+		System.out.println("Current balance : " + currentUser.getBalance());
 
 	}
 

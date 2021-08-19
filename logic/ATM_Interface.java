@@ -28,14 +28,18 @@ public class ATM_Interface extends JFrame {
     private JButton cancelButton;
     private JButton a0Button;
     private JButton goButton;
+    private JButton exitButton1;
 
-    private String[] amount = new String[1];
+    private String[] amount = {""};
     private String[] operation = new String[1];
     private User user;
 
     public ATM_Interface(User currentUser) {
 
         this.user = currentUser;
+
+        textArea1.setText("\n" + "Welcome " + user.getName() + " !");
+
         transferButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
@@ -61,7 +65,6 @@ public class ATM_Interface extends JFrame {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 operation[0] = "Check Balance";
-                JOptionPane.showMessageDialog(null, "Your Balance is Rs.");
             }
         });
         changePinButton.addActionListener(new ActionListener() {
@@ -165,8 +168,8 @@ public class ATM_Interface extends JFrame {
 
                 if ("Deposit".equals(operation[0])) {
                     Deposit d = new Deposit(user);
-                    d.deposit_amount(amount[0]);
-                   // double finalValue = Double.parseDouble(amount[0]);
+                    double finalValue = Double.parseDouble(amount[0]);
+                    d.deposit_amount(finalValue);
                     JOptionPane.showMessageDialog(null, "Rs. " + amount[0] + " Deposited successfully.");
                     amount[0] = "";
                 }
@@ -178,6 +181,18 @@ public class ATM_Interface extends JFrame {
                     amount[0] = "";
                 }
 
+            }
+        });
+        checkBalanceButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                textArea1.setText("Your Current Balance is : " + "\n\n" + "Rs. " + String.valueOf(user.getBalance()));
+            }
+        });
+        exitButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                textArea1.setText("\n" + "Welcome " + user.getName() + " !");
             }
         });
     }
