@@ -1,19 +1,23 @@
 package logic;
 
 public class Deposit{
+	private User currentUser;
+	private double depositAmnt;
+	public Deposit(User currentUser)
+	{
+		this.currentUser = currentUser;
+	}
 
-//	User currentUser;
-//
-//	public Deposit(User currentUser)
-//	{
-//		this.currentUser = currentUser;
-//	}
-
-	public void deposit_amount(double Depositamount,User currentUser) {
+	public void deposit_amount(double Depositamount) {
+		depositAmnt = Depositamount;
 		currentUser.setBalance(currentUser.getBalance() + Depositamount);
 
 		System.out.println("Rs."+ Depositamount + " deposited sucessfully.");
 		System.out.println("Current balance : " + currentUser.getBalance());
 	}
 
+	public void addHistory() {
+		Transaction t = new Transaction(currentUser.getName(),"Deposit",depositAmnt);
+		currentUser.setTransactionHistory(t);
+	}
 }

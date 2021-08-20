@@ -29,6 +29,7 @@ public class ATM_Interface extends JFrame {
     private JButton a0Button;
     private JButton goButton;
     private JButton exitButton1;
+    private JButton transactionHistoryButton;
 
     private String[] amount = {""};
     private String[] operation = new String[1];
@@ -167,15 +168,16 @@ public class ATM_Interface extends JFrame {
             public void actionPerformed(ActionEvent e) {
 
                 if ("Deposit".equals(operation[0])) {
-                    Deposit d = new Deposit();
+                    Deposit d = new Deposit(user);
                     double finalValue = Double.parseDouble(amount[0]);
-                    d.deposit_amount(finalValue, user);
+                    d.deposit_amount(finalValue);
                     JOptionPane.showMessageDialog(null, "Rs. " + amount[0] + " Deposited successfully.");
+                    d.addHistory();
                     amount[0] = "";
                 }
                 else if("Withdraw".equals(operation[0])){
-                    Withdraw w = new Withdraw();
-                    w.withdraw_amount(amount[0],user);
+                    Withdraw w = new Withdraw(user);
+                    w.withdraw_amount(amount[0]);
                     // double finalValue = Double.parseDouble(amount[0]);
                     JOptionPane.showMessageDialog(null,"Rs. " + amount[0] + " Withdrawn successfully.");
                     amount[0] = "";
@@ -193,6 +195,24 @@ public class ATM_Interface extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 textArea1.setText("\n" + "Welcome " + user.getName() + " !");
+            }
+        });
+        transactionHistoryButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Transaction popped = new Transaction("e","e",0.0);
+                TransactionHistory panel = new TransactionHistory();
+                System.out.println(user.getTransactionHistory().empty());
+
+                panel.setContentPane(new TransactionHistory().getRecentTransactions());
+                panel.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                panel.setVisible(true);
+                panel.pack();
+
+                while(user.getTransactionHistory().empty() != true){
+                    popped = user.getTransactionHistory().pop();
+                    panel.gettNameField().setText(popped.getName());
+                }
             }
         });
     }

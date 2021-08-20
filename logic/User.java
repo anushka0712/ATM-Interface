@@ -1,47 +1,35 @@
 package logic;
 
+import java.util.Stack;
+
 public class User {
 	
 	private String name;
 	private long card_number; 
 	private int pin;
 	private double balance = 0;
-	private double limit = 20000;
-	private double minimum_balance = 2000;
+	private Stack<Transaction> transactionHistory = new Stack<Transaction>();
 
-	public User(String name,long card_number, int pin, double balance) {
+
+	public User(String name, long card_number, int pin, double balance) {
 		this.name = name;
 		this.card_number = card_number;
 		this.pin = pin;
 		this.balance = balance;
 	}
 
-
-	public void deposit_amount(double amount) {
-		balance += amount;
-		System.out.println("Rs."+ amount + " deposited sucessfully.");
-		System.out.println("Current balance : " + balance);
-	}
-	
-	public void withdraw_amount(double amount) {
-		if(amount > limit) {
-			System.out.println("Maximum withdrawl amount is Rs.20,000. Please try again.");
-		}
-		else {
-			if(balance - amount < minimum_balance) {
-				System.out.println("Insufficient balance!");
-			}
-			else
-			{
-				balance -= amount;
-				System.out.println("Rs." + amount + " withdrawn successfully.");
-			}
-		}
-	}
-
 	@Override
 	public String toString() {
 		return "logic.User balance = " + balance ;
+	}
+
+	public Stack<Transaction> getTransactionHistory() {
+		return transactionHistory;
+	}
+
+	public void setTransactionHistory(Transaction transactionObj) {
+		transactionHistory.push(transactionObj);
+		//System.out.println(transactionHistory.pop().getName());
 	}
 
 	public String getName() {
