@@ -5,7 +5,7 @@ public class User {
 	private String name;
 	private long card_number; 
 	private int pin;
-	private double balance = 3000.0;
+	private double balance = 0;
 	private double limit = 20000;
 	private double minimum_balance = 2000;
 

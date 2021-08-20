@@ -6,18 +6,35 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class Login extends JFrame {
-    public JPanel LoginMain;
+    private JPanel LoginMain;
     private JButton ENTERButton;
     private JPasswordField passwordField1;
     private JTextArea textArea1;
 
     ArrayList<User> sampleUsers = new ArrayList<User>();
-//    User u1 = new User("Rai",12345,6969,100000.1);
-//    User u2 = new User("Sai",24680,6968,200000.1);
-//    User u3 = new User("Mai",13579,6967,300000.1);
+    User currentUser;
 
+    public JPanel getLoginMain() {
+        return LoginMain;
+    }
 
-    public Login(ArrayList Users,ATM_Interface atmInterface) {
+    public JButton getENTERButton() {
+        return ENTERButton;
+    }
+
+    public JPasswordField getPasswordField1() {
+        return passwordField1;
+    }
+
+    public JTextArea getTextArea1() {
+        return textArea1;
+    }
+
+    public User getCurrentUser() {
+        return currentUser;
+    }
+
+    public Login(ArrayList Users) {
 
         this.sampleUsers = Users;
         ENTERButton.addActionListener(new ActionListener() {
@@ -33,7 +50,9 @@ public class Login extends JFrame {
                         JOptionPane.showMessageDialog(null, "INVALID PIN");
                     } else {
                         JOptionPane.showMessageDialog(null, "LOGGED IN SUCESSFULLY!");
-                        atmInterface.setContentPane(new ATM_Interface().Main);
+
+                        ATM_Interface atmInterface = new ATM_Interface(currentUser);
+                        atmInterface.setContentPane(new ATM_Interface(currentUser).getMain());
                         atmInterface.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                         atmInterface.setVisible(true);
                         atmInterface.pack();
@@ -66,6 +85,7 @@ public class Login extends JFrame {
             for (User u : sampleUsers) {
                 if (u.getPin() == Integer.parseInt(String.valueOf(pin))) {
                     valid = true;
+                    currentUser = u;
                     break;
                 }
             }

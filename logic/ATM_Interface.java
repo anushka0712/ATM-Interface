@@ -167,15 +167,15 @@ public class ATM_Interface extends JFrame {
             public void actionPerformed(ActionEvent e) {
 
                 if ("Deposit".equals(operation[0])) {
-                    Deposit d = new Deposit(user);
+                    Deposit d = new Deposit();
                     double finalValue = Double.parseDouble(amount[0]);
-                    d.deposit_amount(finalValue);
+                    d.deposit_amount(finalValue, user);
                     JOptionPane.showMessageDialog(null, "Rs. " + amount[0] + " Deposited successfully.");
                     amount[0] = "";
                 }
                 else if("Withdraw".equals(operation[0])){
                     Withdraw w = new Withdraw();
-                    w.withdraw_amount(amount[0]);
+                    w.withdraw_amount(amount[0],user);
                     // double finalValue = Double.parseDouble(amount[0]);
                     JOptionPane.showMessageDialog(null,"Rs. " + amount[0] + " Withdrawn successfully.");
                     amount[0] = "";
