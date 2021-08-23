@@ -17,7 +17,7 @@ public class Deposit{
 	}
 
 	public void addHistory() {
-		Transaction t = new Transaction(currentUser.getName(),"Deposit",depositAmnt);
-		currentUser.setTransactionHistory(t);
+		Transaction t = new Transaction("Deposit",depositAmnt);
+		currentUser.getTransactionHistory().add(t);
 	}
 }

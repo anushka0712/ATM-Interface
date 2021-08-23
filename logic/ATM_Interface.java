@@ -200,19 +200,15 @@ public class ATM_Interface extends JFrame {
         transactionHistoryButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Transaction popped = new Transaction("e","e",0.0);
+
                 TransactionHistory panel = new TransactionHistory();
-                System.out.println(user.getTransactionHistory().empty());
+
 
                 panel.setContentPane(new TransactionHistory().getRecentTransactions());
                 panel.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 panel.setVisible(true);
                 panel.pack();
 
-                while(user.getTransactionHistory().empty() != true){
-                    popped = user.getTransactionHistory().pop();
-                    panel.gettNameField().setText(popped.getName());
-                }
             }
         });
     }

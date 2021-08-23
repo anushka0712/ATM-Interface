@@ -2,21 +2,12 @@ package logic;
 
 public class Transaction {
 
-    private String name;
     private String operation;
     private String amount;
 
-    public Transaction(String name, String deposit, double depositAmnt) {
-        this.name = name;
+    public Transaction(String deposit, double depositAmnt) {
         this.operation = operation;
         this.amount = amount;
-    }
-
-    public String getName() {
-        return name;
-    }
-    public void setName(String name) {
-        this.name = name;
     }
 
     public String getOperation() {

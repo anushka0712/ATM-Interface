@@ -1,5 +1,6 @@
 package logic;
 
+import java.util.ArrayList;
 import java.util.Stack;
 
 public class User {
@@ -8,7 +9,7 @@ public class User {
 	private long card_number; 
 	private int pin;
 	private double balance = 0;
-	private Stack<Transaction> transactionHistory = new Stack<Transaction>();
+	private ArrayList<Transaction> transactionHistory;
 
 
 	public User(String name, long card_number, int pin, double balance) {
@@ -23,13 +24,8 @@ public class User {
 		return "logic.User balance = " + balance ;
 	}
 
-	public Stack<Transaction> getTransactionHistory() {
+	public ArrayList<Transaction> getTransactionHistory() {
 		return transactionHistory;
-	}
-
-	public void setTransactionHistory(Transaction transactionObj) {
-		transactionHistory.push(transactionObj);
-		//System.out.println(transactionHistory.pop().getName());
 	}
 
 	public String getName() {
